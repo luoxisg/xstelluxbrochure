@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xstellux S9 Max Product Flyer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --xjera-blue: #27296A;
+            --xjera-dark-grey: #474748;
+            --flyer-bg: #f5f5f7;
+            --flyer-text-dark: #1d1d1f;
+            --flyer-text-light: #6e6e73;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e0e0e0; /* Page background to highlight the flyers */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        /* Container for each flyer page */
+        .flyer-page {
+            width: 100%;
+            max-width: 820px; /* A4 width approximation */
+            min-height: 1160px; /* A4 height approximation */
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 4rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .flyer-page:not(:last-child) {
+            margin-bottom: 2rem; /* Space between pages */
+        }
+
+        .flyer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+        }
+
+        .flyer-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .flyer-headline {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--flyer-text-dark);
+            line-height: 1.2;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .flyer-subheadline {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--flyer-text-light);
+            text-align: center;
+            margin-top: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .product-image-main {
+            width: 100%;
+            max-width: 600px;
+            margin: 2.5rem auto 4rem auto;
+            display: block;
+            border-radius: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--xjera-blue);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .key-features-grid, .use-case-grid {
+            display: grid;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .key-features-grid {
+             grid-template-columns: repeat(1, 1fr);
+        }
+        
+        .use-case-grid {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        
+        @media (min-width: 768px) { /* Desktop columns */
+            .key-features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .use-case-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .feature-item, .use-case-item {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem auto;
+            filter: grayscale(50%) opacity(0.7);
+        }
+
+        .feature-title, .use-case-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--flyer-text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .use-case-title {
+             color: var(--xjera-blue);
+        }
+
+        .feature-description, .use-case-description {
+            font-size: 1rem;
+            color: var(--flyer-text-light);
+            line-height: 1.6;
+        }
+        
+        .use-case-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        
+        .spec-table {
+            width: 100%;
+            margin-top: 2.5rem;
+            border-collapse: collapse;
+        }
+        .spec-table td {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .spec-table td:first-child {
+            font-weight: 500;
+            color: var(--flyer-text-dark);
+            width: 40%;
+        }
+        .spec-table td:last-child {
+            color: var(--flyer-text-light);
+        }
+
+        .flyer-footer {
+            margin-top: auto; /* Push footer to the bottom */
+            border-top: 1px solid #e5e7eb;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .qr-code-placeholder {
+            width: 100px;
+            height: 100px;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            border: 1px dashed #d1d5db;
+        }
+        
+        .page-number {
+             color: var(--flyer-text-light);
+             font-size: 0.875rem;
+        }
+
+        /* Icons from previous version */
+        .icon-video { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9A2.25 2.25 0 004.5 18.75z' /%3E%3C/svg%3E");}
+        .icon-moon { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z' /%3E%3C/svg%3E");}
+        .icon-wifi { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.75 20.25h-.008v.004h.008V20.25z' /%3E%3C/svg%3E");}
+        .icon-gps { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15 10.5a3 3 0 11-6 0 3 3 0 016 0z' /%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z' /%3E%3C/svg%3E");}
+        .icon-parking { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z' /%3E%3C/svg%3E");}
+        .icon-bolt { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z' /%3E%3C/svg%3E");}
+    </style>
+</head>
+<body>
+
+    <!-- Page 1 -->
+    <div class="flyer-page">
+        <header class="flyer-header">
+            <img src="image/logo.jpg" alt="Xstellux Logo" class="flyer-logo" onerror="this.onerror=null;this.alt='Xstellux';">
+            <div class="page-number">Page 1 of 2</div>
+        </header>
+
+        <main>
+            <section>
+                <h1 class="flyer-headline">Xstellux S9 Max</h1>
+                <p class="flyer-subheadline">True 4K Ultra HD Clarity, Your Guardian for Every Journey. Capturing every moment, day and night.</p>
+                <img src="image/1.png" alt="Xstellux S9 Max Product" class="product-image-main" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f5f5f7/333?text=Product+Image+Not+Found';">
+            </section>
+
+            <section>
+                <h2 class="section-title">Core Features at a Glance</h2>
+                <div class="key-features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon icon-video" style="background-size: contain;"></div>
+                        <h3 class="feature-title">True 4K + 2K Dual Recording</h3>
+                        <p class="feature-description">Capture crystal-clear footage from both front and rear views simultaneously.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon icon-moon" style="background-size: contain;"></div>
+                        <h3 class="feature-title">Sony STARVIS 2 Night Vision</h3>
+                        <p class="feature-description">Exceptional low-light performance for clear videos even in the dark.</p>
+                    </div>
+                     <div class="feature-item">
+                        <div class="feature-icon icon-wifi" style="background-size: contain;"></div>
+                        <h3 class="feature-title">High-Speed 5GHz Wi-Fi</h3>
+                        <p class="feature-description">Faster file transfers and seamless connection to the mobile app.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon icon-parking" style="background-size: contain;"></div>
+                        <h3 class="feature-title">24/7 Parking Surveillance</h3>
+                        <p class="feature-description">Monitors your vehicle around the clock for total peace of mind.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon icon-gps" style="background-size: contain;"></div>
+                        <h3 class="feature-title">Built-in GPS</h3>
+                        <p class="feature-description">Logs your driving route, speed, and location data for reliable evidence.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon icon-bolt" style="background-size: contain;"></div>
+                        <h3 class="feature-title">Supercapacitor Power</h3>
+                        <p class="feature-description">Enhanced durability and reliability in extreme temperatures.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="flyer-page">
+        <header class="flyer-header">
+            <img src="image/logo.jpg" alt="Xstellux Logo" class="flyer-logo" onerror="this.onerror=null;this.alt='Xstellux';">
+             <div class="page-number">Page 2 of 2</div>
+        </header>
+
+        <main>
+             <!-- Use Cases Section -->
+            <section>
+                <h2 class="section-title">Capture What Matters, When It Matters Most</h2>
+                <div class="use-case-grid">
+                    <div class="use-case-item">
+                        <img src="image/2.png" alt="Clear daytime road view" class="use-case-image" onerror="this.onerror=null;this.src='https://placehold.co/300x300/f5f5f7/333?text=Use+Case+Image';">
+                        <h3 class="use-case-title">Daily Commutes & Evidence</h3>
+                        <p class="use-case-description">
+                            With 4K Ultra HD resolution, clearly record license plates and road details. Provides powerful video evidence to resolve disputes and clarify incidents.
+                        </p>
+                    </div>
+                    <div class="use-case-item">
+                        <img src="image/3.png" alt="Driving in the city at night" class="use-case-image" onerror="this.onerror=null;this.src='https://placehold.co/300x300/f5f5f7/333?text=Use+Case+Image';">
+                        <h3 class="use-case-title">Night Driving & Low Light</h3>
+                        <p class="use-case-description">
+                           The Sony STARVIS 2 sensor and advanced HDR technology dramatically improve clarity in low-light conditions, keeping you safe after dark.
+                        </p>
+                    </div>
+                    <div class="use-case-item">
+                        <img src="image/5.png" alt="24-hour parking monitor view" class="use-case-image" onerror="this.onerror=null;this.src='https://placehold.co/300x300/f5f5f7/333?text=Use+Case+Image';">
+                        <h3 class="use-case-title">24/7 Parking Security</h3>
+                        <p class="use-case-description">
+                            Using the included hardwire kit, activate 24-hour surveillance. Time-lapse and impact detection modes protect your vehicle when you're away.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Specifications -->
+            <section class="mt-16">
+                 <h2 class="section-title">Technical Specifications</h2>
+                 <table class="spec-table">
+                     <tbody>
+                         <tr><td>Resolution</td><td>Front: 4K (3840x2160P) / Rear: 2K (2560x1440P)</td></tr>
+                         <tr><td>Image Sensor</td><td>Front: Sony STARVIS 2 (IMX678)</td></tr>
+                         <tr><td>Field of View (FOV)</td><td>Front: 160° / Rear: 140° (Example angles, update if needed)</td></tr>
+                         <tr><td>Display</td><td>2.0-inch High-Definition IPS Screen</td></tr>
+                         <tr><td>Video Codec</td><td>H.265 (HEVC)</td></tr>
+                         <tr><td>Wi-Fi</td><td>Dual-Band 2.4GHz & 5GHz</td></tr>
+                         <tr><td>GPS</td><td>Built-in High-Precision Module</td></tr>
+                         <tr><td>Storage</td><td>128GB U3 High-Speed MicroSD Card Included (Supports up to 512GB)</td></tr>
+                         <tr><td>Power Supply</td><td>Supercapacitor</td></tr>
+                         <tr><td>Working Temperature</td><td>-20°C to 70°C (-4°F to 158°F)</td></tr>
+                         <tr><td>Key Features</td><td>Parking Mode, G-Sensor, Voice Control, HDR, Loop Recording</td></tr>
+                     </tbody>
+                 </table>
+            </section>
+        </main>
+        
+        <footer class="flyer-footer">
+            <div>
+                <h3 class="font-bold text-lg" style="color: var(--flyer-text-dark);">Xstellux S9 Max</h3>
+                <a href="https://www.yourwebsite.com" class="text-sm hover:underline" style="color: var(--xjera-blue);" target="_blank">www.yourwebsite.com</a>
+            </div>
+            <div class="qr-code-placeholder">
+                <span>QR Code</span>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
